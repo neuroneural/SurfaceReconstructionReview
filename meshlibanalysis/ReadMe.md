@@ -1,4 +1,4 @@
-## Conda
+# Conda
 
 ```markdown
 You will need to modify the conda path in `findallwpc.sbatch`.
