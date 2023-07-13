@@ -17,19 +17,15 @@ inside of `meshlibanalysis`.
 ```markdown
 Remember to change the location of the CSV file. 
 ```
-# Jobs Directory
-
-```markdown
-Create a `jobs` folder in `meshlibanalysis` if it isn't there already.
-```
 
 
 # Slurm Submission/Execution
 ```bash
 sbatch --array=1-107 findallwpc.sbatch
 ```
-```markdown
 # Jobs Directory
+
+```markdown
 Create a `jobs` folder in `meshlibanalysis` if it isn't there already.
 ```
 
