@@ -1,0 +1,54 @@
+{
+    "cortexode": {
+        "lh_pial": "/data/users2/llu13/output/cortexode/pred/lh_pial",
+        "lh_white": "/data/users2/llu13/output/cortexode/pred/lh_white"
+    },
+    "cortexode-rm": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-pial/cortexode",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-white/cortexode"
+    },
+    "corticalflow": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow/white"
+    },
+    "corticalflow-no-transform": {
+        "lh_pial": "/data/users2/llu13/output/corticalflow/cfpp/lh_pial",
+        "lh_white": "/data/users2/llu13/output/corticalflow/cfpp/lh_white"
+    },
+    "corticalflow-rm": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/corticalflow/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/corticalflow/white"
+    },
+    "deepcsr": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr/white"
+    },
+    "deepcsr-no-transform": {
+        "lh_pial": "/data/users2/washbee/speedrun/outputdirs/deepcsr-output_dir-timing/checkpoints/test-set/lh_pial",
+        "lh_white": "/data/users2/washbee/speedrun/outputdirs/deepcsr-output_dir-timing/checkpoints/test-set/lh_white"
+    },
+    "deepcsr-rm": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/deepcsr/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/deepcsr/white"
+    },
+    "freesurfer": {
+        "lh_pial": "/data/users2/llu13/output/cortexode/truth/samples/converted/lh_pial/",
+        "lh_white": "/data/users2/llu13/output/cortexode/truth/samples/converted/lh_white/"
+    },
+    "freesurfer-rm-2": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-pial/cortexode",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-white/cortexode"
+    },
+    "vox2cortex": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/vox2cortex/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/vox2cortex/white"
+    },
+    "vox2cortex-no-transform": {
+        "lh_pial": "/data/users2/washbee/speedrun/Vox2Cortex_fork/experiments/hcp/test_template_42016_DATASET_NAME/meshes/epoch81_copy/pial",
+        "lh_white": "/data/users2/washbee/speedrun/Vox2Cortex_fork/experiments/hcp/test_template_42016_DATASET_NAME/meshes/epoch81_copy/white"
+    },
+    "vox2cortex-rm": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/vox2cortex/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/vox2cortex/white"
+    }
+}
