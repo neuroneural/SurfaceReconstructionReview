@@ -1,7 +1,6 @@
 import pyvista as pv
 import numpy as np
 from scipy.spatial import cKDTree
-from sklearn.neighbors import KDTree
 import trimesh
 import vtk
 import sys
@@ -28,11 +27,6 @@ def mesh2tricenters(mesh, triangles=None):
     centers = np.mean(triangles, axis=1)
     return centers
 
-
-def get_triangle_count(filepath):
-    mesh = trimesh.load_mesh(filepath)
-    return len(mesh.faces)
-
 def count_collisions(mesh1, mesh2, k=5):
     # Compute triangle centers and construct KDTree for mesh2
     triangles2 = mesh2triangles(mesh2)
@@ -44,7 +38,6 @@ def count_collisions(mesh1, mesh2, k=5):
 
     # Iterate through triangles of mesh1 and check for collisions
     collision_count = 0
-    centers1 = mesh2tricenters(mesh1)
     bad1 = []
     bad2 = []
     for idx, triangle in enumerate(centers1):
@@ -62,12 +55,41 @@ def count_collisions(mesh1, mesh2, k=5):
                 break
     return collision_count, bad1, bad2
 
+def get_triangle_count(filepath):
+    mesh = trimesh.load_mesh(filepath)
+    return len(mesh.faces)
 
 def getSelfIntersections(filepath):
-    mesh1 = trimesh.load_mesh(filepath)
-    mesh2 = trimesh.load_mesh(filepath)
-    return count_collisions(mesh1, mesh2, k=1) #collision_count, bad1, bad2 returned
-    
+    mesh = trimesh.load_mesh(filepath)
+    return count_self_collisions(mesh, k=10)#collision_count, bad1, bad2 
+        
+
+def count_self_collisions(mesh, k=5):
+    # Compute triangle centers and construct KDTree for mesh2
+    faces = mesh.faces
+    triangles = mesh2triangles(mesh)
+    centers = mesh2tricenters(mesh, triangles=triangles)
+    tree = cKDTree(centers)
+
+    # Iterate through triangles of mesh1 and check for collisions
+    collision_count = 0
+    bad1 = []
+    bad2 = []
+    for idx, triangle in enumerate(centers):
+        # Find K nearest neighbors
+        dists, indices = tree.query(triangle.reshape(1,-1), k=k)
+        # Check collision with each nearest neighbor triangle
+        for index in indices[0][1:]:
+            if set(faces[idx]).intersection(faces[index]): continue
+            collision = triangles_intersect(triangles[idx,:,:],
+                                            triangles[index,:,:])
+            if collision:
+                collision_count += 1
+                bad1.append(idx)
+                bad2.append(index)
+                #print(idx, collision_count)
+                break
+    return collision_count, bad1, bad2
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
@@ -76,13 +98,19 @@ if __name__ == "__main__":
 
     mesh1_filename = sys.argv[1]
     mesh2_filename = sys.argv[2]
-
+    print(mesh1_filename, mesh2_filename)
+    
     # Load meshes
-    mesh1 = trimesh.load_mesh(mesh1_filename)
-    mesh2 = trimesh.load_mesh(mesh2_filename)
-
-    # Compute collision count
-    collision_count, bad1, bad2 = count_collisions(mesh1, mesh2, k=1)
+    if mesh1_filename == mesh2_filename:
+        print("looking for self collisions")
+        mesh = trimesh.load_mesh(mesh1_filename)
+        collision_count, bad1, bad2 = count_self_collisions(mesh, k=10)
+        mesh1 = mesh2 = mesh
+    else:
+        mesh1 = trimesh.load_mesh(mesh1_filename)
+        mesh2 = trimesh.load_mesh(mesh2_filename)
+        # Compute collision count
+        collision_count, bad1, bad2 = count_collisions(mesh1, mesh2, k=1)
 
     # plotting
     selected_faces = mesh1.faces[bad1]
@@ -100,6 +128,9 @@ if __name__ == "__main__":
     plotter = pv.Plotter()
     plotter.add_mesh(collisions1, color='r', opacity=0.5)
     plotter.add_mesh(collisions2, color='g', opacity=0.5)
-    plotter.add_mesh(mesh1, color='r', opacity=0.1)
-    plotter.add_mesh(mesh2, color='g', opacity=0.1)
+    if mesh1_filename != mesh2_filename:
+        plotter.add_mesh(mesh1, color='r', opacity=0.1)
+        plotter.add_mesh(mesh2, color='g', opacity=0.1)
+    else:
+        plotter.add_mesh(mesh1, color='b', opacity=0.05)
     plotter.show()
