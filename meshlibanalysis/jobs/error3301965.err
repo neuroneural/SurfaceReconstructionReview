@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 18, in write_intersections2csv
+    List = [model_name, n_cells, n_points, hostname,f1,f2]
+NameError: name 'n_cells' is not defined

@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+TypeError: write_intersections2csv() got an unexpected keyword argument 'f1'
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+TypeError: write_intersections2csv() got an unexpected keyword argument 'f1'
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+TypeError: write_intersections2csv() got an unexpected keyword argument 'f1'
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+TypeError: write_intersections2csv() got an unexpected keyword argument 'f1'
+Traceback (most recent call last):
+  File "/data/users2/washbee/speedrun/SurfaceReconstructionReview/meshlibanalysis/whitePialCollisions.py", line 76, in <module>
+    write_intersections2csv("Torus",intersections=len(pairs), f1=args.file1,f2=args.file2)#change torus to project
+TypeError: write_intersections2csv() got an unexpected keyword argument 'f1'
