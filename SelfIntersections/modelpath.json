@@ -7,6 +7,14 @@
         "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-pial/cortexode",
         "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-white/cortexode"
     },
+    "cortexode-gt": {
+        "lh_pial": "/data/users2/llu13/output/cortexode/truth/samples/converted/lh_pial",
+        "lh_white": "/data/users2/llu13/output/cortexode/truth/samples/converted/lh_white"
+    },
+    "corticalflow-gt": {
+        "lh_pial": "/data/users2/washbee/speedrun/deepcsr-preprocessed-copy/pial",
+        "lh_white": "/data/users2/washbee/speedrun/deepcsr-preprocessed-copy/white"
+    },
     "corticalflow": {
         "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow/pial",
         "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow/white"
@@ -19,6 +27,10 @@
         "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/corticalflow/pial",
         "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/corticalflow/white"
     },
+    "corticalflow-gt-transformed": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow-gt/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/corticalflow-gt/white"
+    },
     "deepcsr": {
         "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr/pial",
         "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr/white"
@@ -27,9 +39,17 @@
         "lh_pial": "/data/users2/washbee/speedrun/outputdirs/deepcsr-output_dir-timing/checkpoints/test-set/lh_pial",
         "lh_white": "/data/users2/washbee/speedrun/outputdirs/deepcsr-output_dir-timing/checkpoints/test-set/lh_white"
     },
+    "deepcsr-gt": {
+        "lh_pial": "/data/users2/washbee/speedrun/deepcsr-preprocessed-copy/pial",
+        "lh_white": "/data/users2/washbee/speedrun/deepcsr-preprocessed-copy/white"
+    },
     "deepcsr-rm": {
         "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/deepcsr/pial",
         "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/deepcsr/white"
+    },
+    "deepcsr-gt-transformed": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr-gt/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/deepcsr-gt/white"
     },
     "freesurfer": {
         "lh_pial": "/data/users2/llu13/output/cortexode/truth/samples/converted/lh_pial/",
@@ -50,5 +70,31 @@
     "vox2cortex-rm": {
         "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/vox2cortex/pial",
         "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/rm-medial-wall-transformed/vox2cortex/white"
+    },
+    "vox2cortex-gt": {
+        "lh_pial": "/data/users2/washbee/speedrun/Vox2Cortex_fork/CSR_data_copy/pial",
+        "lh_white": "/data/users2/washbee/speedrun/Vox2Cortex_fork/CSR_data_copy/white"
+    },
+    "vox2cortex-gt-transformed": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/vox2cortex-gt/pial",
+        "lh_white": "/data/users2/llu13/FStutorial/Jul10-inverse-transform-mesh/transformed/vox2cortex-gt/white"
+    },
+    "pialnn": {
+        "lh_pial": "/data/users2/washbee/speedrun/PialNN_fork/ckpts/eval_subj_id_copy/predicted"
+    },
+    "pialnn-gt": {
+        "lh_pial": "/data/users2/washbee/speedrun/PialNN_fork/ckpts/eval_subj_id_copy/gt"
+    },
+    "pialnn-rm": {
+        "lh_pial": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-pial/pialnn/predicted"
+    },
+    "topofit": {
+        "lh_white": "/data/users2/llu13/output/topofit/data/pred/lh_white"
+    },
+    "topofit-gt": {
+        "lh_white": "/data/users2/llu13/output/topofit/data/gt/lh_white"
+    },
+    "topofit-rm": {
+        "lh_white": "/data/users2/llu13/FStutorial/Jul5/data-for-medial-wall/data/lh-white/topofit"
     }
 }

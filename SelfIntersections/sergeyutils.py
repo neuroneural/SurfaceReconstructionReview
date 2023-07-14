@@ -59,9 +59,9 @@ def get_triangle_count(filepath):
     mesh = trimesh.load_mesh(filepath)
     return len(mesh.faces)
 
-def getSelfIntersections(filepath):
+def getSelfIntersections(filepath, k = 1):
     mesh = trimesh.load_mesh(filepath)
-    return count_self_collisions(mesh, k=10)#collision_count, bad1, bad2 
+    return count_self_collisions(mesh, k=k)#collision_count, bad1, bad2 
         
 
 def count_self_collisions(mesh, k=5):
