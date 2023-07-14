@@ -11,10 +11,22 @@ import hashlib
 import os
 
 
-def triangles_intersect(triangle1, triangle2):
-    faces = np.array([3, 0, 1, 2])
-    surface1 = pv.PolyData(triangle1[0], faces)
-    surface2 = pv.PolyData(triangle2[0], faces)
+def triangles_intersect(triangle1, vertices, faces):
+    face = np.array([3, 0, 1, 2])
+    labelmap = {x: idx for idx, x in enumerate(np.unique(faces))}
+    @np.vectorize
+    def relabel(x):
+        y = 0
+        if x in labelmap:
+            y = labelmap[x]
+        return y
+    faces = relabel(faces)
+    new_column = np.full((faces.shape[0], 1), 3)
+    faces = np.hstack((new_column, faces))
+
+    surface1 = pv.PolyData(triangle1, face)
+    surface2 = pv.PolyData(vertices, faces.flatten())
+
     return surface1.collision(surface2)[1] > 0
 
 def compute_triangle_center(mesh, triangle):
@@ -48,15 +60,13 @@ def count_collisions(mesh1, mesh2, k=5):
         # Find K nearest neighbors
         dists, indices = tree.query(triangle.reshape(1,-1), k=k)
         # Check collision with each nearest neighbor triangle
-        for index in indices:
-            collision = triangles_intersect(triangles1[idx,:,:],
-                                            triangles2[index,:,:])
-            if collision:
-                collision_count += 1
-                bad1.append(idx)
-                bad2.append(index)
-                #print(idx, collision_count)
-                break
+        collision = triangles_intersect(triangles1[idx,:,:],
+            mesh2.vertices[np.sort(np.unique(mesh2.faces[indices[0]].flatten()))],
+            mesh2.faces[indices[0]])
+        if collision:
+            collision_count += 1
+            bad1.append(idx)
+
     return collision_count, bad1, bad2
 
 def get_triangle_count(filepath):
@@ -90,7 +100,13 @@ def getSelfIntersections(filepath, k = 1):
         mesh.save(tmpname)
         mesh = trimesh.load_mesh(tmpname)
     return count_self_collisions(mesh, k=k)#collision_count, bad1, bad2 
-        
+
+def detachedtriangles(mesh, triangle_id, other_ids):
+    # Remove rows based on the mask
+    mask = np.any(np.isin(mesh.faces[other_ids],
+            mesh.faces[triangle_id]), axis=1)
+    faces = mesh.faces[other_ids][~mask]
+    return faces        
 
 def count_self_collisions(mesh, k=5):
     # Compute triangle centers and construct KDTree for mesh2
@@ -106,18 +122,24 @@ def count_self_collisions(mesh, k=5):
     for idx, triangle in enumerate(centers):
         # Find K nearest neighbors
         dists, indices = tree.query(triangle.reshape(1,-1), k=k)
+        # Remove rows based on the mask
+        faces = detachedtriangles(mesh, idx, indices[0][1:])
+        # mask = np.any(np.isin(mesh.faces[indices[0][1:]], mesh.faces[idx]), axis=1)
+        # faces = mesh.faces[indices[0][1:]][~mask]
+        if faces.size == 0:
+            print('k is too small')
+            continue
         # Check collision with each nearest neighbor triangle
-        for index in indices[0][1:]:
-            if set(faces[idx]).intersection(faces[index]): continue
-            collision = triangles_intersect(triangles[idx,:,:],
-                                            triangles[index,:,:])
-            if collision:
-                collision_count += 1
-                bad1.append(idx)
-                bad2.append(index)
-                #print(idx, collision_count)
-                break
+        collision = triangles_intersect(triangles[idx,:,:],
+            mesh.vertices[np.sort(np.unique(faces.flatten()))],
+            faces)
+        if collision:
+            collision_count += 1
+            #print(idx)
+            bad1.append(idx)
+
     return collision_count, bad1, bad2
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:

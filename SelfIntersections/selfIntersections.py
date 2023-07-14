@@ -74,7 +74,7 @@ def printSelfIntersections(path, surface = 'pial'):
     #pairsMeshlib = mrmesh.findCollidingTriangles(mrmesh.MeshPart(mesh1), mrmesh.MeshPart(mesh2))
     faces = su.get_triangle_count(filepath)
 
-    collision_count, bad1, bad2 = su.getSelfIntersections(filepath, k = 3)
+    collision_count, bad1, bad2 = su.getSelfIntersections(filepath, k = 50)
     currentfolderpath = os.path.splitext(os.path.basename(filepath))[0] + '.pkl'
     currentfolderpath = os.path.join("./",args.model,currentfolderpath)
     with open(currentfolderpath, 'wb') as f:
