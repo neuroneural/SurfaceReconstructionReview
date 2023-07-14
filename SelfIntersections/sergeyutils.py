@@ -7,6 +7,10 @@ import sys
 
 vtk.vtkLogger.SetStderrVerbosity(vtk.vtkLogger.VERBOSITY_OFF)
 
+import hashlib
+import os
+
+
 def triangles_intersect(triangle1, triangle2):
     faces = np.array([3, 0, 1, 2])
     surface1 = pv.PolyData(triangle1[0], faces)
@@ -56,11 +60,35 @@ def count_collisions(mesh1, mesh2, k=5):
     return collision_count, bad1, bad2
 
 def get_triangle_count(filepath):
-    mesh = trimesh.load_mesh(filepath)
+    print('trimesh file path', filepath)
+    mesh = None
+    try:
+        mesh = trimesh.load_mesh(filepath)
+    except:
+        print('filepath caused error: \n', filepath)
+        random_string = os.urandom(32)
+        # Compute the hash of the random string
+        seed = hashlib.sha256(random_string).hexdigest()
+        tmpname = "tmp"+seed+".stl"
+        mesh = pv.read(filepath)
+        mesh.save(tmpname)
+        mesh = trimesh.load_mesh(tmpname)
+   
     return len(mesh.faces)
-
+    
 def getSelfIntersections(filepath, k = 1):
-    mesh = trimesh.load_mesh(filepath)
+    mesh = None
+    try:
+        mesh = trimesh.load_mesh(filepath)
+    except:
+        print('filepath caused error: \n', filepath)
+        random_string = os.urandom(32)
+        # Compute the hash of the random string
+        seed = hashlib.sha256(random_string).hexdigest()
+        tmpname = "tmp"+seed+".stl"
+        mesh = pv.read(filepath)
+        mesh.save(tmpname)
+        mesh = trimesh.load_mesh(tmpname)
     return count_self_collisions(mesh, k=k)#collision_count, bad1, bad2 
         
 
@@ -103,7 +131,20 @@ if __name__ == "__main__":
     # Load meshes
     if mesh1_filename == mesh2_filename:
         print("looking for self collisions")
-        mesh = trimesh.load_mesh(mesh1_filename)
+        filepath = mesh1_filename
+        mesh = None
+        try:
+            mesh = trimesh.load_mesh(filepath)
+        except:
+            print('filepath caused error: \n', filepath)
+            random_string = os.urandom(32)
+            # Compute the hash of the random string
+            seed = hashlib.sha256(random_string).hexdigest()
+            tmpname = "tmp"+seed+".stl"
+            mesh = pv.read(filepath)
+            mesh.save(tmpname)
+            mesh = trimesh.load_mesh(tmpname)
+    
         collision_count, bad1, bad2 = count_self_collisions(mesh, k=10)
         mesh1 = mesh2 = mesh
     else:

@@ -27,7 +27,7 @@ for key, value in data.items():
         whitepial = "white" if "white" in e else "pial"
         path = value[e]  # Replace with the correct value
         
-        command = [
+        cmd = [
             "python",
             "/data/users2/washbee/speedrun/SurfaceReconstructionReview/SelfIntersections/selfIntersections.py",
             "--file1",
@@ -40,4 +40,8 @@ for key, value in data.items():
             key
         ]
 
-        subprocess.call(command)
+        result = subprocess.run(cmd)
+        if result.returncode == 0:
+            print(f"The command '{' '.join(cmd)}' executed successfully.")
+        else:
+            print(f"The command '{' '.join(cmd)}' failed to execute.")

@@ -58,6 +58,13 @@ for file in list1:
         filePassed = file
         break
 
+print('filepath',filepath)
+print('args.type',args.type)
+print('args.model',args.model)
+print('args.file1',args.file1)
+
+assert filepath is not None
+print('assertion passed')
 def printSelfIntersections(path, surface = 'pial'):
     
     # Load the meshes from the STL files
@@ -67,9 +74,10 @@ def printSelfIntersections(path, surface = 'pial'):
     #pairsMeshlib = mrmesh.findCollidingTriangles(mrmesh.MeshPart(mesh1), mrmesh.MeshPart(mesh2))
     faces = su.get_triangle_count(filepath)
 
-    collision_count, bad1, bad2 = su.getSelfIntersections(filepath, k = 10)
-    
-    with open(os.path.splitext(os.path.basename(filepath))[0] + '.pkl', 'wb') as f:
+    collision_count, bad1, bad2 = su.getSelfIntersections(filepath, k = 3)
+    currentfolderpath = os.path.splitext(os.path.basename(filepath))[0] + '.pkl'
+    currentfolderpath = os.path.join("./",args.model,currentfolderpath)
+    with open(currentfolderpath, 'wb') as f:
         pickle.dump((collision_count, bad1, bad2), f)
 
 

@@ -15,7 +15,7 @@
 
 . /data/users2/washbee/anaconda3/bin/activate /data/users2/washbee/anaconda3/envs/meshlib
 
-line_pial=$(sed -n ${SLURM_ARRAY_TASK_ID}p ../lh_pial_sorted.txt)
+line_pial=$(sed -n ${SLURM_ARRAY_TASK_ID}p lh_pial_sorted.txt)
 echo "Line ${SLURM_ARRAY_TASK_ID}: $line_pial"
 
-python dispatch_slurms.py line_pial
+python dispatch_slurms.py $line_pial
