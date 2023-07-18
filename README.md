@@ -25,7 +25,7 @@ https://github.com/neuroneural/CortexODE_fork
 ## DeepCSR fork
 https://github.com/neuroneural/DeepCSR-fork  
 
-# Plots and figures python 
+# Plots, figures, and analysis python 
 https://github.com/neuroneural/BrainPlots  
 
 # Links to papers
