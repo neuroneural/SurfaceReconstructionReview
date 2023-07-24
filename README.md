@@ -1,3 +1,5 @@
+# Contact      
+William Ashbee wsashbee@gmail.com  
 # Surface Reconstruction Review
 We fork several projects and benchmark their timing and memory values. Ultimately this should become a journal publication. We plan to present our results at ohbm conference. 
 
